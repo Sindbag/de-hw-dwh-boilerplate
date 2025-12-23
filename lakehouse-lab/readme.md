@@ -2,12 +2,18 @@
 
 ## Track A: Iceberg + Spark
 1) Start:
+
+   ```
    docker compose -f docker/compose-iceberg.yml up -d --build
+   ```
 
-2) Open spark container:
-   docker exec -it docker-spark-1 bash
+3) Open spark container:
 
-3) Start spark-sql with Iceberg + S3A packages:
+   ```
+   docker exec -it docker-spark-1 sh
+   ```
+
+4) Start spark-sql with Iceberg + S3A packages:
    #### a. убедимся, что директории существуют и доступны на запись
 
    ```
@@ -34,7 +40,7 @@
      --conf spark.hadoop.fs.s3a.secret.key=adminadmin
    ```
 
-4) Run SQL:
+5) Run SQL:
    ```
    -- in spark-sql:
    SOURCE /opt/sql/iceberg/01_tables.sql;
@@ -42,7 +48,7 @@
    SOURCE /opt/sql/iceberg/03_dm.sql;
    ```
 
-5) Checks:
+6) Checks:
 ```
    SELECT count(*) FROM lake.ods.transactions;
    SELECT count(*) FROM lake.ods.merchants;
