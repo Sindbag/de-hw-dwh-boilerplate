@@ -34,7 +34,7 @@ services:
     volumes:
       - spark_ivy:/tmp/.ivy2
       - ./../sql:/opt/sql:ro
-    entrypoint: ["/bin/bash", "-lc", "sleep infinity"]
+    entrypoint: ["/bin/bash", "-lc", "tail -f /dev/null"]
 
   data-gen:
     build:
