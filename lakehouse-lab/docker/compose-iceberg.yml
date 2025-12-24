@@ -22,19 +22,21 @@ services:
     entrypoint: ["/bin/sh", "/minio-init.sh"]
 
   spark:
-    image: apache/spark:3.5.7
+    build:
+      context: ./../spark
+      dockerfile: Dockerfile
     depends_on: [minio, mc]
     environment:
       AWS_ACCESS_KEY_ID: admin
       AWS_SECRET_ACCESS_KEY: adminadmin
-      PATH: "/opt/spark/bin:${PATH}"
+      PATH: "/opt/spark/bin:/bin:/usr/bin:${PATH}"
       HOME: /tmp
       SPARK_JARS_IVY: /tmp/.ivy2
-    user: "0:0"
+    user: root
     volumes:
       - spark_ivy:/tmp/.ivy2
       - ./../sql:/opt/sql:ro
-    entrypoint: ["/bin/bash", "-lc", "sleep infinity"]
+    entrypoint: ["/usr/bin/sleep", "infinity"]
 
   data-gen:
     build:

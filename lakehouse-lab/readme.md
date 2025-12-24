@@ -10,7 +10,7 @@
 3) Open spark container:
 
    ```
-   docker exec -it docker-spark-1 sh
+   docker exec -it docker-spark-1 /bin/bash
    ```
 
 4) Start spark-sql with Iceberg + S3A packages:
@@ -43,7 +43,7 @@
 5) Run SQL:
    ```
    -- in spark-sql:
-   SOURCE /opt/sql/iceberg/01_tables.sql;
+   SOURCE /opt/sql/iceberg/01_tables.sql;ш
    SOURCE /opt/sql/iceberg/02_ingest.sql;
    SOURCE /opt/sql/iceberg/03_dm.sql;
    ```
