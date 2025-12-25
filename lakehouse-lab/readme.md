@@ -43,7 +43,7 @@
 5) Run SQL:
    ```
    -- in spark-sql:
-   SOURCE /opt/sql/iceberg/01_tables.sql;ш
+   SOURCE /opt/sql/iceberg/01_tables.sql;
    SOURCE /opt/sql/iceberg/02_ingest.sql;
    SOURCE /opt/sql/iceberg/03_dm.sql;
    ```
